@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SearchContainer /> component snapshot 1`] = `
+<div
+  className="sc-AxiKw ckaBAP"
+>
+  <input
+    className="sc-AxjAm btDDba"
+    id="SearchHere"
+    onChange={[Function]}
+    placeholder="Search here"
+    type="text"
+  />
+</div>
+`;
