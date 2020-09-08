@@ -1,37 +1,58 @@
 import React from "react";
-import { connect } from "react-redux";
-import Header from "../../components/header";
-import Search from "../../components/search";
-import Articles from "../../components/articles";
+import styled from "styled-components";
+import Headings from "../../components/Headings";
+import { space, media } from "../../utils/theme";
+import { Link } from "react-router-dom";
 
-import { addAdditionalArticlesAction } from "../../actions/addArticlesAction";
-
-let Home = ({ history, match, addAdditionalArticlesAction }) => {
-  console.log(match);
-  let addNew = () => {
-    return addAdditionalArticlesAction();
-  };
-
+let Home = () => {
   return (
-    <div className="App">
-      <Header />
-      <Search />
-      <Articles />
-      <button onClick={() => addNew()}>Add Articles</button>
-    </div>
+    <HomeContainer>
+      <StyledHeading type={5} bold={true} align="center">
+        Welcome to the Trivia Challenge!
+      </StyledHeading>
+      <Paragraph>
+        You will be presented with 10 True or False questions.
+      </Paragraph>
+      <Paragraph>Can you score 100%</Paragraph>
+
+      <BeginButton to={`/quiz`}>BEGIN</BeginButton>
+    </HomeContainer>
   );
 };
 
-const mapDispatchToProps = {
-  addAdditionalArticlesAction,
-};
+const StyledHeading = styled(Headings)`
+  margin: ${space[3]} auto 0 auto;
+  max-width: 180px;
+  ${media.tablet`
+    max-width: 225px;
+  `}
+`;
 
-const mapStateToProps = ({ addArticlesReducer }) => {
-  return {
-    maxPages: addArticlesReducer.maxPages,
-    searchParam: addArticlesReducer.searchParam,
-    currentPage: addArticlesReducer.currentPage,
-  };
-};
+const HomeContainer = styled.div`
+  margin: 0px auto;
+  padding: 0px ${space[3]};
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  ${media.tablet`
+    margin: 0px auto;
+    max-width: 400px;
+  `}
+`;
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+const Paragraph = styled.p`
+  margin: auto auto 0 auto;
+  max-width: 180px;
+  text-align: center;
+`;
+
+const BeginButton = styled(Link)`
+  margin: auto auto ${space[5]} auto;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  color: black;
+`;
+
+export default Home;

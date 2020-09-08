@@ -12,6 +12,22 @@ export const sizes = {
   ultrawide: ["min", 2560],
 };
 
+export const space = [
+  "0px",
+  "5px",
+  "10px",
+  "15px",
+  "20px",
+  "25px",
+  "30px",
+  "35px",
+  "45px",
+  "50px",
+  "55px",
+  "60px",
+  "65px",
+];
+
 export const media = Object.keys(sizes).reduce((acc, label) => {
   acc[label] = (...args) => css`
     @media (${sizes[label][0]}-width: ${sizes[label][1]}px) {
@@ -24,22 +40,7 @@ export const media = Object.keys(sizes).reduce((acc, label) => {
 const theme = {
   colors: {
     black: "#000",
-    black1: "#111",
-    black2: "#222",
-    blue: "#2980b9",
-
-    green: "#16a085",
-    green1: "#00CA4E",
-    grey: "#aaa",
-
-    orange: "#FFBD44",
-
-    red: "#FF605C",
-
-    white: "#FFF",
-    white1: "#eee",
-
-    yellow: "#f1c410",
+    grey: "#e0dfe0",
   },
 };
 

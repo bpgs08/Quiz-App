@@ -3,8 +3,8 @@
 */
 
 import { combineReducers } from "redux";
-import { addArticlesReducer } from "./addArticlesReducer";
+import { addQuestionsReducer } from "./addQuestionsReducer";
 
 export const rootReducer = combineReducers({
-  addArticlesReducer,
+  addQuestionsReducer,
 });
