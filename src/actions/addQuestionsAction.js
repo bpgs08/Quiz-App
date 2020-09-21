@@ -6,6 +6,8 @@ const GET_NEW_QUESTIONS_FAILURE = "GET_NEW_QUESTIONS_FAILURE";
 
 const GET_NEXT_QUESTION_SUCCESS = "GET_NEXT_QUESTION_SUCCESS";
 
+const RESET_GAME_SUCCESS = "RESET_GAME_SUCCESS";
+
 export const getQuestions = () => {
   const endpoint =
     "https://opentdb.com/api.php?amount=10&difficulty=hard&type=boolean";
@@ -50,7 +52,6 @@ export const nextQuestion = (answer, currentQuestion, questions, score) => {
   const newQuestions = questions;
   newQuestions[currentQuestion].isCorrect = isCorrect;
   let newScore = score;
-  console.log(newScore);
   if (isCorrect) {
     if (newScore >= 0) {
       newScore = newScore + 1;
@@ -58,9 +59,6 @@ export const nextQuestion = (answer, currentQuestion, questions, score) => {
       newScore = 1;
     }
   }
-
-  console.log(newScore);
-  debugger;
   return (dispatch) => {
     dispatch({
       type: GET_NEXT_QUESTION_SUCCESS,
@@ -68,9 +66,22 @@ export const nextQuestion = (answer, currentQuestion, questions, score) => {
         isCorrect: isCorrect,
         currentQuestion: currentQuestion,
         questions: newQuestions,
-        isFinished: currentQuestion === 9,
         nextQuestion: currentQuestion + 1,
         score: newScore,
+      },
+    });
+  };
+};
+
+export const resetGame = () => {
+  return (dispatch) => {
+    dispatch({
+      type: RESET_GAME_SUCCESS,
+      payload: {
+        loading: true,
+        currentQuestion: 0,
+        questions: [],
+        score: 0,
       },
     });
   };

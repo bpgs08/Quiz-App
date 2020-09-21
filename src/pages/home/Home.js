@@ -29,14 +29,14 @@ const StyledHeading = styled(Headings)`
 `;
 
 const HomeContainer = styled.div`
-  margin: 0px auto;
-  padding: 0px ${space[3]};
+  margin: ${space[0]} auto;
+  padding: ${space[0]} ${space[3]};
   max-width: 300px;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   ${media.tablet`
-    margin: 0px auto;
+    margin: ${space[0]} auto;
     max-width: 400px;
   `}
 `;

@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { connect } from "react-redux";
-
 import { getQuestions, nextQuestion } from "../../actions/addQuestionsAction";
 import Questions from "../../components/Questions";
+import Loading from "../../components/Loading";
 
 let Quiz = ({
   getQuestions,
@@ -11,25 +11,23 @@ let Quiz = ({
   currentQuestion,
   currentQuestionContent,
   currentQuestionTitle,
-  isFinished,
   score,
+  history,
 }) => {
-  useEffect(() => {
-    console.log("here");
-  }, []);
-
-  if (!questions) {
+  if (!questions?.length > 0) {
     getQuestions();
   }
 
   let submitAnswer = (e) => {
-    console.log(score);
     nextQuestion(e.target.value, currentQuestion, questions, score);
+    if (currentQuestion === 9) {
+      history.push("/results");
+    }
   };
 
   return (
     <div>
-      {!isFinished ? (
+      {currentQuestion <= 9 ? (
         <Questions
           questions={questions}
           currentQuestion={currentQuestion}
@@ -39,7 +37,7 @@ let Quiz = ({
           score={score}
         />
       ) : (
-        <div>results</div>
+        <Loading>Loading...</Loading>
       )}
     </div>
   );
@@ -56,7 +54,6 @@ const mapStateToProps = ({ addQuestionsReducer }) => {
     currentQuestion: addQuestionsReducer.currentQuestion,
     currentQuestionTitle: addQuestionsReducer.currentQuestionTitle,
     currentQuestionContent: addQuestionsReducer.currentQuestionContent,
-    isFinished: addQuestionsReducer.isFinished,
     score: addQuestionsReducer.score,
   };
 };

@@ -41,6 +41,8 @@ const theme = {
   colors: {
     black: "#000",
     grey: "#e0dfe0",
+    forestgreen: "#228B22",
+    darkgrey: "#808080",
   },
 };
 

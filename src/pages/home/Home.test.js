@@ -1,21 +1,10 @@
 import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
-import { render, waitFor } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
+import { render, cleanup, screen } from "@testing-library/react";
 import Home from "./Home";
+import userEvent from "@testing-library/user-event";
 
-test("it works", () => {
-  const { getByText, getByLabelText } = render(
-    <Router>
-      <Home />
-    </Router>
-  );
-
-  getByText("Welcome to the Trivia Challenge!");
-  getByText("You will be presented with 10 True or False questions.");
-  getByText("Can you score 100%");
-  getByText("BEGIN");
-});
+afterEach(cleanup);
 
 test("should take a snapshot", () => {
   const { asFragment } = render(
@@ -33,19 +22,18 @@ test("should take a snapshot", () => {
   ).toMatchSnapshot();
 });
 
-// test("add to list", async () => {
-//   const { getByText, getByLabelText } = render(
-//     <Router>
-//       <Home />
-//     </Router>
-//   );
+test("Renders without crashing", () => {
+  const { getByText } = render(
+    <Router>
+      <Home />
+    </Router>
+  );
 
-//   getByText("Welcome to the Trivia Challenge!");
-//   getByText("You will be presented with 10 True or False questions.");
-//   getByText("Can you score 100%");
-//   getByText("BEGIN");
+  getByText("Welcome to the Trivia Challenge!");
+  getByText("You will be presented with 10 True or False questions.");
+  getByText("Can you score 100%");
+  getByText("BEGIN");
 
-//   const button = getByText("BEGIN");
-//   userEvent.click(button);
-//   await waitFor(() => getByText("BEGINs"));
-// });
+  const button = getByText("BEGIN");
+  userEvent.click(button);
+});

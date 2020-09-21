@@ -1,7 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import { space, media, colors } from "../../utils/theme";
+import { space, media } from "../../utils/theme";
 import Headings from "../../components/Headings";
+import StandardButton from "../StandardButton";
+import Loading from "../Loading";
 
 let Questions = ({
   currentQuestion,
@@ -22,12 +24,12 @@ let Questions = ({
 
           <NumberContainer>{currentQuestion + 1} of 10</NumberContainer>
           <ButtonContainer>
-            <AnswerButton value="True" onClick={submitAnswer}>
+            <StandardButton value="True" onClick={submitAnswer}>
               TRUE
-            </AnswerButton>
-            <AnswerButton value="False" onClick={submitAnswer}>
+            </StandardButton>
+            <StandardButton value="False" onClick={submitAnswer}>
               FALSE
-            </AnswerButton>
+            </StandardButton>
           </ButtonContainer>
         </>
       ) : (
@@ -36,11 +38,6 @@ let Questions = ({
     </QuizContainer>
   );
 };
-
-const Loading = styled.div`
-  display: flex;
-  align-self: center;
-`;
 
 const StyledHeading = styled(Headings)`
   margin: ${space[3]} auto ${space[3]} auto;
@@ -56,7 +53,7 @@ const QuestionContainer = styled.div`
   border: 1px solid black;
   display: flex;
   align-items: center;
-  padding: 25px;
+  padding: ${space[5]};
   text-align: center;
   margin-top: auto;
   margin-bottom: ${space[3]};
@@ -71,15 +68,15 @@ const NumberContainer = styled.div`
 `;
 
 const QuizContainer = styled.div`
-  margin: 0px auto;
-  padding: 0px ${space[3]};
+  margin: ${space[0]} auto;
+  padding: ${space[0]} ${space[3]};
   max-width: 300px;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   justify-content: center;
   ${media.tablet`
-    margin: 0px auto;
+    margin: ${space[0]} auto;
     max-width: 400px;
   `}
 `;
@@ -89,15 +86,6 @@ const ButtonContainer = styled.div`
   padding-bottom: ${space[8]};
   margin-top: auto;
   justify-content: space-between;
-`;
-
-const AnswerButton = styled.button`
-  cursor: pointer;
-  color: black;
-  padding: 10px;
-  border: 1px solid ${colors.black};
-  border-radius: 5px;
-  width: 100px;
 `;
 
 export default Questions;

@@ -1,5 +1,4 @@
 export const addQuestionsReducer = (state = {}, { type, payload }) => {
-  // console.log(state, "state");
   switch (type) {
     case "GET_NEW_QUESTIONS_ATTEMPT":
       return {
@@ -28,9 +27,16 @@ export const addQuestionsReducer = (state = {}, { type, payload }) => {
         currentQuestionTitle: payload.questions[payload.nextQuestion]?.category,
         currentQuestionContent:
           payload.questions[payload.nextQuestion]?.question,
-        isFinished: payload.isFinished,
         score: payload.score,
         loading: false,
+      };
+    case "RESET_GAME_SUCCESS":
+      return {
+        ...state,
+        loading: payload.loading,
+        currentQuestion: payload.nextQuestion,
+        questions: payload.questions,
+        score: payload.score,
       };
     default:
       return state;

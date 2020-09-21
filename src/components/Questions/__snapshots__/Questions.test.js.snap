@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should take a snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-kEqYlL kibijz"
+  >
+    <h5
+      class="sc-eCApGN gaEGIs sc-fujyUd fKBKxq"
+      data-js-type-5="true"
+    >
+      This is a Question Title
+    </h5>
+    <div
+      class="sc-pNWxx MUSPs"
+    >
+      <div>
+        <p>
+          content
+        </p>
+      </div>
+    </div>
+    <div
+      class="sc-jrsJCI ezQhXB"
+    >
+      3 of 10
+    </div>
+    <div
+      class="sc-iqAbSa cShxcE"
+    >
+      <button
+        class="sc-gKAblj jzYliY"
+        value="True"
+      >
+        TRUE
+      </button>
+      <button
+        class="sc-gKAblj jzYliY"
+        value="False"
+      >
+        FALSE
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;
